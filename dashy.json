@@ -1,0 +1,34 @@
+{
+  "name": "dashy",
+  "description": "Selector combinators and other helpers for Sass.",
+  "version": "0.0.1",
+  "main": "app/assets/stylesheets/_dashy.scss",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "bin",
+    "dashy.gemspec",
+    "CONTRIBUTING.md",
+    "features",
+    "LICENSE.md",
+    "lib",
+    "Gemfile",
+    "Gemfile.lock",
+    "package.json",
+    "Rakefile"
+  ],
+  "keywords": [
+    "css",
+    "mixins",
+    "sass",
+    "scss"
+  ],
+  "authors": [
+    "tosyx (http://tosyx.com)"
+  ],
+  "homepage": "http://dashy.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tosyx/dashy.git"
+  }
+}

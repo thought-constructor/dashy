@@ -1,0 +1,158 @@
+@mixin define-box($selector, $position:(), $top:(), $left:(), $right:(), $bottom:(), $width:(), $height:$width)
+{
+    #{ $selector }
+    {
+        @if is($top)      { top      : $top      ; }
+        @if is($left)     { top      : $left     ; }
+        @if is($right)    { top      : $right    ; }
+        @if is($bottom)   { top      : $bottom   ; }
+        @if is($position) { position : $position ; }
+        @if is($height)   { height   : $height   ; }
+        @if is($width)    { width    : $width    ; }
+    }
+}
+
+@mixin define-bar($selector, $width:(), $height:())
+{
+    #{ select($selector) }
+    {
+        @if is($height)   { height   : $height   ; }
+        @if is($width)    { width    : $width    ; }
+    }
+}
+
+@mixin define-positioned-bar($selector, $top:(), $left:(), $right:(), $bottom:(), $width:(), $height:())
+{
+    @include define-bar($selector:$selector, $width:$width, $height:$height)
+    {
+        @if is($top)      { top      : $top      ; }
+        @if is($left)     { top      : $left     ; }
+        @if is($right)    { top      : $right    ; }
+        @if is($bottom)   { top      : $bottom   ; }
+    }
+}
+
+@mixin define-fixed-position-bar($selector, $top:(), $left:(), $right:(), $bottom:(), $width:(), $height:())
+{
+    @include define-positioned-bar($selector, $top:$top, $left:$left, $right:$right, $bottom:$bottom, $width:$width, $height:$height)
+    {
+        position:fixed;
+    }
+    @if 100% == $width
+    {
+        @if      is-zero($top)    body { margin-top    : $height ; }
+        @else if is-zero($bottom) body { margin-bottom : $height ; }
+    }
+    @if 100% == $height
+    {
+                 @if is-zero($left)   body { margin-left   : $width ; }
+        @else if is-zero($right)  body { margin-right  : $width ; }
+    }
+}
+
+@mixin define-sticky-bar()
+{
+
+}
+
+@mixin define-sticky-footer($height:0)
+{
+    body
+    {
+        margin-top:$header-toolbar-height; margin-bottom:$footer-toolbar-height;
+    }
+}
+
+@mixin define-grid($gutter-widths:$default-grid-gutter-widths, $gutter-height-ratios:$default-grid-gutter-height-ratios)
+{
+    @each $gutter-width in $gutter-widths
+    {
+        $gutter-width-name: $gutter-width;
+        @if default == $gutter-width { $gutter-width: $default-grid-gutter-width; }
+
+        @each $gutter-height-ratio in $gutter-height-ratios
+        {
+            $gutter-height-ratio-name: $gutter-height-ratio;
+            @if default == $gutter-height-ratio { $gutter-height-ratio: $default-grid-gutter-height-ratio; }
+            $gutter-height-ratio: number-from-fraction($gutter-height-ratio);
+            $gutter-height: $gutter-height-ratio * $gutter-width;
+            
+            #{ select-grids($gutter-width:$gutter-width-name, $gutter-height-ratio:$gutter-height-ratio-name) }
+            {
+                margin-top: - $gutter-height;
+                > *
+                {
+                    margin-top: $gutter-height;
+                    &.gutter-overflow-top    { margin-top:    - $gutter-height; } // these should be part of select-grid-cells
+                    &.gutter-overflow-bottom { margin-bottom: - $gutter-height; } // these should be part of select-grid-cells
+                }
+            }
+        }
+
+        #{ select-grids($gutter-width:$gutter-width-name) }
+        {
+            @each $span-width in $define-grid-span-widths
+            {
+                $nominal-width:  nth($span-width, 1);
+                $actual-width:   $nominal-width + ($nominal-width * $gutter-width)/100% - $gutter-width;
+                $fractions:      nth($span-width, 2);
+                $cell:           select-class(width $fractions);       // these should be part of select-grid-cells
+                $overflow-left:  select-class(gutter-overflow left);   // these should be part of select-grid-cells
+                $overflow-right: select-class(gutter-overflow right);  // these should be part of select-grid-cells
+
+                #{ select-children(       $cell                                 ) } { width: $actual-width;                                                }
+                #{ select-children(select($cell $overflow-left)                 ) } { width: $actual-width + $gutter-width; margin-left:  - $gutter-width; }
+                #{ select-children(select($cell $overflow-right)                ) } { width: $actual-width + $gutter-width; margin-right: - $gutter-width; }
+                #{ select-children(select($cell $overflow-left $overflow-right) ) } { width: $actual-width + $gutter-width * 2;                            }
+            }
+        }
+    }
+}
+
+$define-grid-span-widths:
+    (008.33% ("1/12"))
+    (009.09% ("1/10"))
+    (010.00% ("1/11"))
+    (011.11% ("1/9"))
+    (012.50% ("1/8"))
+    (014.29% ("1/7"))
+    (016.67% ("1/6" "2/12"))
+    (018.18% ("2/11"))
+    (020.00% ("2/10" "1/5"))
+    (022.22% ("2/9"))
+    (025.00% ("3/12" "2/8" "1/4"))
+    (027.27% ("3/11"))
+    (028.57% ("2/7"))
+    (030.00% ("3/10"))
+    (033.33% ("1/3" "2/6" "4/12" "3/9"))
+    (036.36% ("4/11"))
+    (037.50% ("3/8"))
+    (040.00% ("4/10" "2/5"))
+    (041.67% ("5/12"))
+    (042.86% ("3/7"))
+    (044.44% ("4/9"))
+    (045.45% ("5/11"))
+    (050.00% ("4/8" "2/4" "1/2" "5/10" "6/12" "3/6"))
+    (054.55% ("6/11"))
+    (055.56% ("5/9"))
+    (057.14% ("4/7"))
+    (058.33% ("7/12"))
+    (060.00% ("6/10" "3/5"))
+    (062.50% ("5/8"))
+    (063.64% ("7/11"))
+    (066.67% ("6/9" "8/12" "4/6" "2/3"))
+    (070.00% ("7/10"))
+    (071.43% ("5/7"))
+    (072.73% ("8/11"))
+    (075.00% ("3/4" "6/8" "9/12"))
+    (077.78% ("7/9"))
+    (080.00% ("4/5" "8/10"))
+    (081.82% ("9/11"))
+    (083.33% ("5/6" "10/12"))
+    (085.71% ("6/7"))
+    (087.50% ("7/8"))
+    (088.89% ("8/9"))
+    (090.00% ("9/10"))
+    (090.91% ("10/11"))
+    (091.67% ("11/12"))
+    (100.00% ("6/6" "10/10" "9/9" "8/8" "7/7" "11/11" "5/5" "2/2" "1/1" "4/4" "3/3" "12/12"));

@@ -1,0 +1,161 @@
+@function list-append($list, $value, $separator:comma)
+{
+    @return append($list, $value, $separator);
+}
+
+@function list-length($list)
+{
+    @return length($list);
+}
+
+@function list-nth($list, $index)
+{
+    @return nth($list, $index);
+}
+
+@function list-first($list)
+{
+    @return list-nth($list, 1);
+}
+
+@function list-second($list)
+{
+    @return list-nth($list, 2);
+}
+
+@function list-last($list)
+{
+    @return list-nth($list, list-length($list));
+}
+
+@function list-head ($list)
+{
+    @return list-first($list);
+}
+
+@function list-tail($list)
+{
+    $result: ();
+    @for $i from 2 through list-length($list)
+    {
+        $result: list-append($result, list-nth($list, $i));
+    }
+    @return $result;
+}
+
+@function list-maybe-nth($list, $i)
+{
+    @if is-list($list)
+    {
+        @if list-length($list) < $i { @return (); }
+        @return list-nth($list, $i);
+    }
+}
+
+@function list-maybe-first($list)
+{
+    @return list-maybe-nth($list, 1);
+}
+
+@function list-maybe-second($list)
+{
+    @return list-maybe-nth($list, 2);
+}
+
+@function list-compact($list)
+{
+    $result: ();
+    @each $item in $list
+    {
+        @if not is-empty($item) and not is-blank($item)
+        {
+            $result: append($result, $item);
+        }
+    }
+    @return $result;
+}
+
+@function list-flatten($values)
+{
+    $result: ();
+    @each $value in $values
+    {
+        @if is-list($value)
+        {
+            @each $x in list-flatten($value) { $result: list-append($result, $x); }
+        }
+        @else
+        {
+            $result: list-append($result, $value);
+        }
+    }
+    @return $result;
+}
+
+// search //////////////////////////////////////////////////////////////////
+
+@function list-contains-none($items, $these)
+{
+    @return not list-contains-any($items, $these);
+}
+
+@function list-contains-any($items, $these)
+{
+    @each $item in $items
+    {
+        @if list-contains($these, $item) { @return true; }
+    }
+    @return false;
+}
+
+@function list-contains($items, $this)
+{
+    @each $item in $items
+    {
+        @if $this == $item { @return true; }
+    }
+    @return false;
+}
+
+@function list-find-by-nth($lists, $i, $val)
+{
+    @each $list in $lists
+    {
+        @if $val == list-nth($list, $i) { @return $list; }
+    }
+    @return ();
+}
+
+@function list-find-by-first($pairs, $first)
+{
+    @return list-find-by-nth($pairs, 1, $first);
+}
+
+@function list-find-by-second($pairs, $second)
+{
+    @return list-find-by-nth($pairs, 2, $second);
+}
+
+@function list-lookup($pairs, $first)
+{
+    @return list-second(list-find-by-first($pairs, $first));
+}
+
+@function list-reverse-lookup($pairs, $second)
+{
+    @return list-first(list-find-by-second($pairs, $second));
+}
+
+@function list-find-opposite($pairs, $first-or-second)
+{
+    @return list-find-either(list-lookup($pairs, $first-or-second), list-reverse-lookup($pairs, $first-or-second));
+}
+
+@function list-find-either($possibilities)
+{
+    @each $possibility in $possibilities
+    {
+        @if not is-null($possibility) { @return $possibility; }
+    }
+    @return ();
+}

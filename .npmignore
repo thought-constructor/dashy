@@ -1,0 +1,12 @@
+.gitignore
+app/
+bin/
+dashy.gemspec
+bower.json
+CONTRIBUTING.md
+features/
+LICENSE.md
+lib/
+Gemfile
+Gemfile.lock
+Rakefile

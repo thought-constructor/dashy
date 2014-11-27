@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+# CodeKit needs relative paths
+require File.dirname(__FILE__) + '/../lib/dashy.rb'
+
+Dashy::Generator.start
+
+# Gem structure adapted from thoughtbot/bourbon...

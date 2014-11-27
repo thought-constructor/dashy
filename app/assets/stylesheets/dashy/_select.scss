@@ -1,0 +1,124 @@
+@function select-buttons($button: '*')
+{
+    @return select-either(
+        select-as-children('ol.buttons' $button),
+        select('a.button' $button),
+        select(button $button),
+        select('input[type=submit]' $button)
+    );
+}
+
+@function select-inputs($input: '*')
+{
+    @return select-either(select(input $input), select(textarea $input));
+}
+
+@function select-text-inputs($input: '*')
+{
+    @return select-either(select(('input[type=text]', 'input[type=password]') $input), select(textarea $input));
+}
+
+@function select-headings($heading: '*')
+{
+    @return select-either(select-main-headings($heading), select-subheadings($heading));
+}
+
+@function select-main-headings($heading: '*')
+{
+    @return select(h1 $heading);
+}
+
+@function select-subheadings($heading: '*')
+{
+    @return select-either(select(h2 $heading),
+                          select(h3 $heading),
+                          select(h4 $heading),
+                          select(h5 $heading),
+                          select(h6 $heading));
+}
+
+@function select-lists($list:'*')
+{
+    @return select((ul, ol) $list);
+}
+
+@function select-list-items($list-items:'*')
+{
+    @return select-lists-items('*', $list-items);
+}
+
+@function select-lists-items($list:'*', $items:'*')
+{
+    @return select($list select-children(select(li $items)));
+}
+
+@function select-tables($table:'*')
+{
+    @return select(table $table);
+}
+
+@function select-table-groups($group:'*')
+{
+    @return select((thead, tbody, tfoot) $group);
+}
+
+@function select-tabloids($tabloid:'*')
+{
+    @return select-either(select-tables($tabloid), select-table-groups($tabloid));
+}
+
+@function select-tabloids-rows($tabloid:'*', $row:'*')
+{
+    @return select-either(select-as('>', select-table-groups($tabloid) $row),
+                                                select-as('>', select-tables($tabloid) '*' $row));
+}
+
+@function select-table-groups-rows($table-group:'*', $row:'*')
+{
+    @return select-as('>', $table-group select(tr, $row));
+}
+
+@function select-tabloids-rows-cells($tabloid:'*', $row:'*', $cell:'*')
+{
+    @return select-as('>', select-tabloids-rows($tabloid, $row) $cell);
+}
+
+@function select-table-groups-rows-cells($table-group:'*', $row:'*', $cell:'*')
+{
+    @return select-as('>', select-table-groups-rows($table-group, $row) $cell);
+}
+
+@function select-table-rows($row:'*')
+{
+    @return select(tr $row);
+}
+
+@function select-table-cells($cell:'*')
+{
+    @return select((th, td) $cell);
+}
+
+// select-grids ///////////////////////////////////////////////////////////////////////////////////
+//
+@function select-grids($grid:'*', $gutter-width:'', $gutter-height-ratio:'')
+{
+    @if is($gutter-width)        and default != $gutter-width        { $grid: select($grid select-class(gutter-width        $gutter-width)); }
+    @if is($gutter-height-ratio) and default != $gutter-height-ratio { $grid: select($grid select-class(gutter-height-ratio $gutter-height-ratio)); }
+    @return select($grid, '.grid');
+}
+
+// select-grid-cells //////////////////////////////////////////////////////////////////////////////
+//
+@function select-grid-cells($cell:'*', $span:'', $columns:'')
+{
+    @return select-grids-cells('*', $cell, $span:$span, $columns:$columns);
+}
+
+// select-grids-cells /////////////////////////////////////////////////////////////////////////////
+//
+@function select-grids-cells($grid:'*', $cell:'*', $gutter-width:'', $gutter-height-ratio:'', $span:'', $columns:'')
+{
+    @if is($span) and default != $span { $cell: select(select-parameter(grid-cell, width, $span + '/' + $columns), $cell); }
+    @return select-as-children(select-grids($grid, $gutter-width, $gutter-height-ratio) $cell);
+}
+

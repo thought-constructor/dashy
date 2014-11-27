@@ -1,0 +1,28 @@
+{
+  "name": "dashy",
+  "version": "0.0.1",
+  "description": "A simple and lightweight mixin library for Sass.",
+  "keywords": [
+    "css",
+    "mixins",
+    "sass",
+    "scss"
+  ],
+  "homepage": "http://github.com/tosyx/dashy",
+  "bugs": {
+    "url": "https://github.com/tosyx/dashy/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "tosyx",
+    "url": "http://tosyx.com"
+  },
+  "main": "app/assets/stylesheets/_dashy.scss",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tosyx/dashy.git"
+  },
+  "scripts": {
+    "test": "echo \"No test specified\""
+  }
+}

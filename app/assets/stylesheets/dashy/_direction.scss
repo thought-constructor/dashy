@@ -1,0 +1,36 @@
+@import "dashy/list";
+
+$directions-horizontal:
+    up
+    down
+;
+
+$directions-vertical:
+    left
+    right
+;
+
+$directions-vectors:
+    (up    (+0.0 -1.0))
+    (down  (+0.0 +1.0))
+    (left  (-1.0 +0.0))
+    (right (+1.0 +0.0))
+;
+
+$directions: join($directions-horizontal, $directions-vertical);
+
+$directions-sides:
+    (up       top)
+    (down  bottom)
+    (left    left)
+    (right  right);
+
+@function direction-vector($dir)
+{
+    @return list-lookup($directions-vectors, $dir);
+}
+
+@function direction-of-side($side)
+{
+    @return list-lookup($directions-sides, $side);
+}

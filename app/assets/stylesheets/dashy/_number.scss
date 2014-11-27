@@ -1,0 +1,79 @@
+$number-silver-ratio: 2.414;
+
+$number-golden-ratio: 1.618;
+$number-golden-ratio-doubled: $number-golden-ratio * 2;
+
+$number-golden-ratio: 1.618;
+$number-golden-ratio-doubled: $number-golden-ratio * 2;
+
+$number-euler:  2.718;
+$number-pi: 3.142;
+
+$numbers-from-fractions:
+    ("0"   0.000)
+    ("1/1" 1.000)
+    ("1/2" 0.500)
+    ("1/3" 0.333)
+    ("2/3" 0.667)
+    ("1/4" 0.250)
+    ("2/4" 0.500)
+    ("3/4" 0.750)
+;
+
+@function number-squared($number)
+{
+    @return $number * $number;
+}
+
+@function number-of($amt, $n)
+{
+    @return ($amt * 0) + $n;
+}
+
+@function number-one($amt)
+{
+    @return number-of($amt, 1);
+}
+
+@function number-integral($amt)
+{
+    @return number-floor($amt + 0.049999);
+}
+
+@function number-fractional($amt)
+{
+    @return $amt - number-integral($amt);
+}
+
+/** @param $amt The source.
+    * @returns the first digit after the decimal point.
+    */
+@function number-decimal($amt)
+{
+    @return number-round(number-fractional($amt) * 10);
+}
+
+@function number-ceiling($amt)
+{
+    @return ceil($amt);
+}
+
+@function number-floor($amt)
+{
+    @return floor($amt);
+}
+
+@function number-round($amt)
+{
+    @return round($amt);
+}
+
+@function number-unit($number)
+{
+    @return unit($number);
+}
+
+@function number-from-fraction($fraction)
+{
+    @return list-lookup($numbers-from-fractions, $fraction);
+}
