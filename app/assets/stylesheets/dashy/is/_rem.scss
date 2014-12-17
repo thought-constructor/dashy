@@ -1,0 +1,4 @@
+@function is-rem($val)
+{
+    @return is-unit(rem, $val);
+}

@@ -1,0 +1,5 @@
+@mixin set-rem($attribute, $value)
+{
+    @if is-rem($value) { @include set($attribute, to-px($value)) }
+    #{ $attribute }: $value;
+}

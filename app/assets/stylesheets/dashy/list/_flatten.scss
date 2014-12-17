@@ -1,0 +1,16 @@
+@function list-flatten($values)
+{
+    $result: ();
+    @each $value in $values
+    {
+        @if is-list($value)
+        {
+            @each $x in list-flatten($value) { $result: list-append($result, $x); }
+        }
+        @else
+        {
+            $result: list-append($result, $value);
+        }
+    }
+    @return $result;
+}

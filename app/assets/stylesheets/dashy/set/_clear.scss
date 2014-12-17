@@ -1,0 +1,11 @@
+@mixin set-clear($value)
+{
+	@if "contents" == $value
+	{
+		&:after { content: " "; clear: both; display: block; visiblity: hidden; }
+	}
+	@else
+	{
+	    clear: $value;
+	}
+}

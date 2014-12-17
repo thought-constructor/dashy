@@ -1,0 +1,9 @@
+@function list-tail($list)
+{
+    $result: ();
+    @for $i from 2 through list-length($list)
+    {
+        $result: list-append($result, list-nth($list, $i));
+    }
+    @return $result;
+}

@@ -1,0 +1,9 @@
+@function select-tabloids-rows-cells($tabloids:'*', $rows:'*', $cells:'*')
+{
+    @return select-as('>', select-tabloids-rows($tabloids, $rows) $cells);
+}
+
+@mixin select-tabloids-rows-cells($tabloids: '*', $rows: '*', $cells:'*')
+{
+	#{ select-tabloids-rows-cells($tabloids, $rows, $cells) } { @content; }
+}

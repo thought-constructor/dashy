@@ -1,0 +1,9 @@
+@function select-inputs($inputs: '*')
+{
+    @return select-either(select(input $inputs), select(textarea $inputs));
+}
+
+@mixin select-inputs($inputs: '*')
+{
+	#{ select-inputs($inputs) } { @content; }
+}

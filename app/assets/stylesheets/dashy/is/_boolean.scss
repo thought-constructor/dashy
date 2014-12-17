@@ -1,0 +1,4 @@
+@function is-boolean($val)
+{
+    @return type-of($val) == bool;
+}

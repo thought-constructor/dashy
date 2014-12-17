@@ -1,0 +1,9 @@
+@function select-list-items($items: '*')
+{
+    @return select-list-items('*', $items);
+}
+
+@mixin select-list-items($items: '*')
+{
+    @include select-list-items($items) { @content; }
+}

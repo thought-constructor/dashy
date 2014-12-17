@@ -1,0 +1,5 @@
+@mixin set-padding($side, $amount)
+{
+	@if is-rem($amount) { @include set-padding($side, to-px($amount)) }
+	padding-#{ $side }: #{ $amount };
+}

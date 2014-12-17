@@ -1,0 +1,4 @@
+@mixin set-text-transform($transform)
+{
+	@include set(text-transform, $transform);
+}

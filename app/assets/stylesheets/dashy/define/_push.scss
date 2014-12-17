@@ -1,0 +1,17 @@
+@mixin define-push($direction, $amount)
+{
+	@include initialize-push;
+
+	#{ select-class(push $direction $amount) }
+	{
+		@include set-push($direction, $amount);
+	}
+}
+
+@mixin define-pushes($directions, $amounts)
+{
+	@each $direction in $directions { @each $amount in $amounts
+	{
+		@include define-push($direction, $amount);
+	}}
+}

@@ -1,0 +1,5 @@
+@function is-empty($val)
+{
+    @if is-list($val) { @return list-length($val) == 0; }
+    @return false;
+}

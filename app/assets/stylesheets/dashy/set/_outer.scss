@@ -1,0 +1,4 @@
+@mixin set-outer($side)
+{
+	@include set-position(opposide-side($side), 100%);
+}

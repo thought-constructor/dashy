@@ -1,0 +1,15 @@
+@mixin define-min-height($height)
+{
+	#{ select-class(min-height $height) }
+	{
+		@include set-min-height($height);
+	}
+}
+
+@mixin define-min-heights($heights)
+{
+	@each $height in $heights
+	{
+		@include define-min-height($height);
+	}
+}

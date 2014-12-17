@@ -1,0 +1,15 @@
+@mixin define-display($display)
+{
+	#{ select-class(display $display) }
+	{
+		@include set-display($display);
+	}
+}
+
+@mixin define-displays($displays: $all-displays)
+{
+	@each $display in $displays
+	{
+		@include define-display($display);
+	}
+}

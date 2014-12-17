@@ -1,0 +1,14 @@
+$initialize-pull: true;
+
+@mixin initialize-pull
+{
+	@if $initialize-pull
+	{
+		$initialize-pull: false !global;
+		
+		#{ select-class-prefix(pull-) }
+		{
+		    @include set-position(relative);
+		}
+	}
+}

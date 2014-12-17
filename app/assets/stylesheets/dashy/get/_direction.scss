@@ -1,0 +1,6 @@
+$get-direction-of-side: (top: up, left: left, right: right, bottom: down);
+
+@function get-direction-of-side($side)
+{
+    @return map-get($get-direction-of-side, $side);
+}

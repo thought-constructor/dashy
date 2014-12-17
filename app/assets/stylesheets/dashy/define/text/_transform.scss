@@ -1,0 +1,15 @@
+@mixin define-text-transform($transform)
+{
+	#{ select-class(text-transform $transform) }, #{ select-class(text $transform) }
+	{
+		@include set-text-transform($transform);
+	}
+}
+
+@mixin define-text-transforms($transforms: $all-text-transforms)
+{
+	@each $transform in $transforms
+	{
+		@include define-text-transform($transform);
+	}
+}

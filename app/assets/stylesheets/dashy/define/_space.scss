@@ -1,0 +1,15 @@
+@mixin define-space($side, $amount)
+{
+	#{ select-class(space $side $amount) }
+	{
+		@include set-space($side, $amount);
+	}
+}
+
+@mixin define-spaces($sides, $amounts)
+{
+	@each $side in $sides { @each $amount in $amounts
+	{
+		@include define-space($side, $amount);
+	}}
+}

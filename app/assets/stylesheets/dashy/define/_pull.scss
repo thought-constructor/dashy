@@ -1,0 +1,17 @@
+@mixin define-pull($direction, $amount)
+{
+	@include initialize-pull;
+
+	#{ select-class(pull $direction $amount) }
+	{
+		@include set-pull($direction, $amount);
+	}
+}
+
+@mixin define-pulls($directions, $amounts)
+{
+	@each $direction in $directions { @each $amount in $amounts
+	{
+		@include define-pull($direction, $amount);
+	}}
+}

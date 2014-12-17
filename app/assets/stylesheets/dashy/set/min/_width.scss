@@ -1,0 +1,4 @@
+@mixin set-min-width($min-width)
+{
+	@include set-rem(min-width, $min-width);
+}

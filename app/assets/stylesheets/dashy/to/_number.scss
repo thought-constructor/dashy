@@ -1,0 +1,9 @@
+@function to-number-from-percentage($per)
+{
+	@return $per / 100%;
+}
+
+@function to-number($arg)
+{
+	@if is-percentage($arg) { @return to-number-from-percentage(arg / 100%); }
+}

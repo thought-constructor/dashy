@@ -1,0 +1,9 @@
+@function select-tables($tables: '*')
+{
+    @return select(table $tables);
+}
+
+@mixin select-tables($tables: '*')
+{
+    @include select-tables($tables) { @content; }
+}

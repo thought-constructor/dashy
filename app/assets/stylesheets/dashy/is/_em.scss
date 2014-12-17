@@ -1,0 +1,4 @@
+@function is-em($val)
+{
+    @return is-unit(em, $val);
+}

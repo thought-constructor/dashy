@@ -1,0 +1,4 @@
+@function is-percentage($val)
+{
+    @return is-unit("%", $val);
+}

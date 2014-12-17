@@ -1,0 +1,9 @@
+@function to-px-from-rem($rem)
+{
+    @return $font-size-default * $rem / 1rem;
+}
+
+@function to-px($num)
+{
+    @if is-rem($num) { @return to-px-from-rem($num); }
+}

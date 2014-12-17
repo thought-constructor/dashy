@@ -1,0 +1,14 @@
+$initialize-gutter: true;
+
+@mixin initialize-gutter
+{
+	@if $initialize-gutter
+	{
+		$initialize-gutter: false !global;
+
+		#{ select(select-class-prefix(gutter-) select-children()) }
+		{
+			@include set-box-sizing(border-box);
+		}
+	}
+}

@@ -1,0 +1,5 @@
+@function list-second($list)
+{
+	@if list-length($list) >= 2 { @return list-nth($list, 2); }
+	@return ();
+}

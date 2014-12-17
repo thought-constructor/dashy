@@ -1,0 +1,4 @@
+@function is-unit($unit, $val)
+{
+    @return is-number($val) and $unit == unit($val);
+}

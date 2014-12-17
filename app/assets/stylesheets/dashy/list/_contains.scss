@@ -1,0 +1,13 @@
+@function list-contains-any($items, $these)
+{
+    @each $item in $items
+    {
+        @if list-contains($these, $item) { @return true; }
+    }
+    @return false;
+}
+
+@function list-contains-none($items, $these)
+{
+    @return not list-contains-any($items, $these);
+}

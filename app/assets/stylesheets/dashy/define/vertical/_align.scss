@@ -1,0 +1,15 @@
+@mixin define-vertical-align($align)
+{
+	#{ select-class(vertical-align $align) }, #{ select-class(vertical $align) }, #{ select-class(align $align) }
+	{
+		@include set-vertical-align($align);
+	}
+}
+
+@mixin define-vertical-aligns($aligns: $all-vertical-aligns)
+{
+	@each $align in $aligns
+	{
+		@include define-vertical-align($align);
+	}
+}

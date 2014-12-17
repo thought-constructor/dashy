@@ -1,0 +1,6 @@
+$get-opposite-side: (top: bottom, bottom: top, left: right, right: left);
+
+@function get-opposite-side($side)
+{
+    @return map-get($get-opposite-side, $side);
+}

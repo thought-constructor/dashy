@@ -1,0 +1,15 @@
+@mixin define-font-style($style)
+{
+	#{ select-class(font-style $style) }, #{ select-class(font $style) }
+	{
+		@include set-font-style($style);
+	}
+}
+
+@mixin define-font-styles($styles: $all-font-styles)
+{
+	@each $style in $styles
+	{
+		@include define-font-style($style);
+	}
+}

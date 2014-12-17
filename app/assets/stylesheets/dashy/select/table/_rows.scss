@@ -1,0 +1,4 @@
+@function select-table-rows($rows: '*')
+{
+    @return select(tr $rows);
+}

@@ -1,0 +1,11 @@
+$to-orientation-from-dimension: (width: horizontal, height: vertical);
+
+@function to-orientation-from-dimension($dimension)
+{
+	@return map-get($to-orientation-from-dimension, $dimension);
+}
+
+@function to-orientation($arg)
+{
+	@if is-dimension($arg) { @return to-orientation-from-dimension($arg); }
+}

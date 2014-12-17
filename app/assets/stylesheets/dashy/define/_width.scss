@@ -1,0 +1,43 @@
+@mixin define-width($width)
+{
+	@if is-unitless($width)
+	{
+		@include define-elastic-width(to-percentage-from-unitless($width));
+	}
+	@else if is-percentage($width)
+	{
+		@include define-elastic-width($width);
+	}
+	@else
+	{
+		@include define-fixed-width($width);
+	}
+}
+
+@mixin define-elastic-width($width-percentage)
+{
+	$width-fraction: to-fraction-from-percentage($width-percentage);
+	$approximate-width-percentage: number-approximate-low($width-percentage);
+
+	#{ select-class(width $width-fraction) },
+	#{ select-class(width $approximate-width-percentage) }
+	{
+		@include set(width, $approximate-width-percentage);
+	}
+}
+
+@mixin define-fixed-width($width)
+{
+	#{ select-class(width $width) }
+	{
+		@include set-width($width);
+	}
+}
+
+@mixin define-widths($widths)
+{
+	@each $width in $widths
+	{
+		@include define-width($width);
+	}
+}

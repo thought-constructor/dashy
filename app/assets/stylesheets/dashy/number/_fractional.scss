@@ -1,0 +1,4 @@
+@function number-fractional($amt)
+{
+    @return $amt - number-integral($amt);
+}

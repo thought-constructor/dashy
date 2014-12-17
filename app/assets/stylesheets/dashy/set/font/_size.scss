@@ -1,0 +1,4 @@
+@mixin set-font-size($size)
+{
+	@include set-rem(font-size, $size);
+}

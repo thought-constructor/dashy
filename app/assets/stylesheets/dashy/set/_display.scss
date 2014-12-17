@@ -1,0 +1,11 @@
+@mixin set-display($value)
+{
+	@if tabular == $value
+	{
+		display: table; & > { display: table-cell; }
+	}
+	@else
+	{
+		display: $value; @if $value == inline-block { *display: inline; zoom: 1; }
+	}
+}

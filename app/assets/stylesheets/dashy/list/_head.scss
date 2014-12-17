@@ -1,0 +1,4 @@
+@function list-head ($list)
+{
+    @return list-first($list);
+}

@@ -1,0 +1,4 @@
+@function list-nth($list, $index)
+{
+    @return nth($list, $index);
+}

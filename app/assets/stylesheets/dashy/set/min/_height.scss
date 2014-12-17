@@ -1,0 +1,7 @@
+@mixin set-min-height($min-height)
+{
+	@if is-rem($min-height) { @include set-min-height(to-px($min-height)) }
+	min-height: #{ $min-height };
+	height:auto !important;
+	height: #{ $min-height };
+}

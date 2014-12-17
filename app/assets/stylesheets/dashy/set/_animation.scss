@@ -1,0 +1,10 @@
+@mixin set-animation($arguments...)
+{
+    @if 1 == length($arguments)
+    {
+        -webkit-animation: $arguments;
+           -moz-animation: $arguments;
+             -o-animation: $arguments;
+                animation: $arguments;
+    }
+}

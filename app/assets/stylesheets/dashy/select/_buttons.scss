@@ -1,0 +1,14 @@
+@function select-buttons($buttons: '*')
+{
+    @return select-either(
+        select-as-children(select-class(buttons) li $buttons),
+        select((a label) select-class(button) $buttons),
+        select(button $buttons),
+        select('input[type=submit]' $buttons)
+    );
+}
+
+@mixin select-buttons($buttons: '*')
+{
+    #{ select-buttons($buttons) } { @content; }
+}

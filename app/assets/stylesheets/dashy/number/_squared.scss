@@ -1,0 +1,4 @@
+@function number-squared($number)
+{
+    @return $number * $number;
+}

@@ -1,0 +1,4 @@
+@mixin set-font-style($style)
+{
+	@include set(font-style, $style);
+}

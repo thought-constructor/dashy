@@ -1,0 +1,4 @@
+@mixin set-pull($direction, $amount)
+{
+	@include set-position(get-side-in-direction($direction), - $amount);
+}

@@ -1,0 +1,9 @@
+@function select-table-cells($cells: '*')
+{
+    @return select((th, td) $cells);
+}
+
+@mixin select-table-cells($cells: '*')
+{
+	#{ select-table-cells($cells) } { @content; }
+}

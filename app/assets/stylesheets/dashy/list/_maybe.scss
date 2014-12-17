@@ -1,0 +1,18 @@
+@function list-maybe-nth($list, $i)
+{
+    @if is-list($list)
+    {
+        @if list-length($list) < $i { @return (); }
+        @return list-nth($list, $i);
+    }
+}
+
+@function list-maybe-first($list)
+{
+    @return list-maybe-nth($list, 1);
+}
+
+@function list-maybe-second($list)
+{
+    @return list-maybe-nth($list, 2);
+}

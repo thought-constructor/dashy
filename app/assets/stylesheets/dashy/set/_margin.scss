@@ -1,0 +1,5 @@
+@mixin set-margin($side, $amount)
+{
+	@if is-rem($amount) { @include set-margin($side, to-px($amount)) }
+	margin-#{ $side }: #{ $amount };
+}

@@ -1,0 +1,4 @@
+@function select-table-groups($groups: '*')
+{
+    @return select((thead, tbody, tfoot) $groups);
+}

@@ -1,0 +1,4 @@
+@function list-length($list)
+{
+    @return length($list);
+}

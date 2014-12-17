@@ -1,0 +1,4 @@
+@function is-unitful($val)
+{
+    @return is-number($val) and not is-blank(unit($val));
+}

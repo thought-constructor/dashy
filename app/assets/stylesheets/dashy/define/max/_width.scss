@@ -1,0 +1,15 @@
+@mixin define-max-width($width)
+{
+	#{ select-class(max-width $width) }
+	{
+		@include set-max-width($width);
+	}
+}
+
+@mixin define-max-widths($widths)
+{
+	@each $width in $widths
+	{
+		@include define-max-width($width);
+	}
+}

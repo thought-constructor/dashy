@@ -1,0 +1,4 @@
+@function list-last($list)
+{
+    @return list-nth($list, list-length($list));
+}

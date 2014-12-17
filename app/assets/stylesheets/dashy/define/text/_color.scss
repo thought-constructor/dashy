@@ -1,0 +1,15 @@
+@mixin define-text-color($color)
+{
+	#{ select-class(text-color $color) }, #{ select-class(text $color) }
+	{
+		@include set-text-color($color);
+	}
+}
+
+@mixin define-text-colors($colors)
+{
+	@each $color in $colors
+	{
+		@include define-text-color($color);
+	}
+}

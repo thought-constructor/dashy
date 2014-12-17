@@ -1,0 +1,15 @@
+@mixin define-font-size($size)
+{
+	#{ select-class(font-size $size) }, #{ select-class(font $size) }
+	{
+		@include set-font-size($size);
+	}
+}
+
+@mixin define-font-sizes($sizes)
+{
+	@each $size in $sizes
+	{
+		@include define-font-size($size);
+	}
+}

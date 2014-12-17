@@ -1,0 +1,4 @@
+@function is-ex($val)
+{
+    @return is-unit(ex, $val);
+}

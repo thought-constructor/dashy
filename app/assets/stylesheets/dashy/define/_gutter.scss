@@ -1,0 +1,23 @@
+$define-gutter-dimensions-sides: (width: left, height: top);
+
+@mixin define-gutter($dimension, $amount)
+{
+	@include initialize-gutter;
+
+	$side: map-get($define-gutter-dimensions-sides, $dimension);
+
+	#{ select-class(gutter $dimension $amount) },
+	#{ select(select-class(to-orientation($dimension)), select-class(gutter $amount)) }
+	{
+		@include set-margin($side, - $amount);
+		> * { @include set-padding($side, $amount); }
+	}
+}
+
+@mixin define-gutters($dimensions, $amounts)
+{
+	@each $dimension in $dimensions { @each $amount in $amounts
+	{
+		@include define-gutter($dimension, $amount);
+	}}
+}

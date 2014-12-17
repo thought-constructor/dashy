@@ -1,0 +1,43 @@
+@function list-find-by-first($pairs, $first)
+{
+    @return list-find-by-nth($pairs, 1, $first);
+}
+
+@function list-find-by-nth($lists, $i, $val)
+{
+    @each $list in $lists
+    {
+        @if $val == list-nth($list, $i) { @return $list; }
+    }
+    @return ();
+}
+
+@function list-find-by-second($pairs, $second)
+{
+    @return list-find-by-nth($pairs, 2, $second);
+}
+
+@function list-find-corresponding($pairs, $first-or-second)
+{
+    @return list-find-either(list-find-first-by-second($pairs, $first-or-second),
+    	                     list-find-second-by-first($pairs, $first-or-second));
+}
+
+@function list-find-either($possibilities...)
+{
+    @each $possibility in $possibilities
+    {
+        @if not is-null($possibility) { @return $possibility; }
+    }
+    @return ();
+}
+
+@function list-find-first-by-second($pairs, $second)
+{
+    @return list-first(list-find-by-second($pairs, $second));
+}
+
+@function list-find-second-by-first($pairs, $first)
+{
+    @return list-second(list-find-by-first($pairs, $first));
+}

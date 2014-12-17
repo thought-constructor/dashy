@@ -1,0 +1,12 @@
+@function list-compact($list)
+{
+    $result: ();
+    @each $item in $list
+    {
+        @if not is-empty($item) and not is-blank($item)
+        {
+            $result: append($result, $item);
+        }
+    }
+    @return $result;
+}

@@ -1,0 +1,4 @@
+@mixin set-text-decoration($decoration)
+{
+	@include set(text-decoration, $decoration);
+}

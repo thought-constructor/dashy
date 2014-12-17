@@ -1,0 +1,15 @@
+@mixin define-float($side)
+{
+	#{ select-class(float $side) }
+	{
+		@include set-float($side);
+	}
+}
+
+@mixin define-floats($sides: $all-horizontal-sides)
+{
+	@each $side in $sides
+	{
+		@include define-float($side);
+	}
+}

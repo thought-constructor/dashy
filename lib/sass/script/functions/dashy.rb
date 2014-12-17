@@ -282,6 +282,18 @@ module Sass
       end
       declare :list_of, [:list], :var_args => true
 
+      def is_fraction str
+        Sass::Script::Value::String === str && %r{^[0-9]+/[0-9]+$} === str.value
+      end
+
+      def to_number_from_fraction str
+        Sass::Script::Value::Number.new eval "1.0 * #{ str.value }" if is_fraction str
+      end
+
+      def to_fraction_from_number num
+        Sass::Script::Value::String.new Rational(num.value).rationalize(0.001).to_s, :identifier
+      end
+
     end
   end
 end

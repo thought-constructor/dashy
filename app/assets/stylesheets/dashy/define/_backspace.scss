@@ -1,0 +1,15 @@
+@mixin define-backspace($side, $amount)
+{
+	#{ select-class(backspace $side $amount) }
+	{
+		@include set-backspace($side, $amount);
+	}
+}
+
+@mixin define-backspaces($sides, $amounts)
+{
+	@each $side in $sides { @each $amount in $amounts
+	{
+		@include define-backspace($side, $amount);
+	}}
+}

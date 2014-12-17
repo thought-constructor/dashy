@@ -1,0 +1,15 @@
+@mixin define-inner($side)
+{
+	.inner-fill, #{ select-class(inner $side) }
+	{
+		@include set-inner($side);
+	}
+}
+
+@mixin define-inners($sides: $all-sides)
+{
+	@each $side in $sides
+	{
+		@include define-inner($side);
+	}
+}

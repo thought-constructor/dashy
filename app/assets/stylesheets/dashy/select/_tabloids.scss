@@ -1,0 +1,9 @@
+@function select-tabloids($tabloids: '*')
+{
+    @return select-either(select-tables($tabloids), select-table-groups($tabloids));
+}
+
+@mixin select-tabloids($tabloids: '*')
+{
+    @include select-tabloids($tabloids) { @content; }
+}

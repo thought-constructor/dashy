@@ -1,0 +1,9 @@
+@function select-lists-items($lists: '*', $items: '*')
+{
+    @return select($lists select-children(select(li $items)));
+}
+
+@mixin select-lists-items($lists: '*', $items: '*')
+{
+    @include select-lists-items($lists, $items) { @content; }
+}

@@ -1,0 +1,11 @@
+@mixin set-position($position-or-side, $amount:"")
+{
+	@if is-blank($amount)
+	{
+		position: #{ $position-or-side };
+	}
+	@else
+	{
+		#{ $position-or-side }: $amount;
+	}
+}

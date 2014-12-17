@@ -1,0 +1,11 @@
+@function select-text-inputs($input: '*')
+{
+	// TODO: utilize $all-text-inputs...
+	// 
+    @return select-either(select(('input[type=text]', 'input[type=password]') $input), select(textarea $input));
+}
+
+@mixin select-text-inputs($input: '*')
+{
+	#{ select-text-inputs($input) } { @content; }
+}

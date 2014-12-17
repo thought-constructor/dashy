@@ -1,0 +1,4 @@
+@mixin set-line-height($line-height)
+{
+	@include set-rem(line-height, $line-height);
+}

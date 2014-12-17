@@ -1,0 +1,15 @@
+@mixin define-height($height)
+{
+	#{ select-class(height $height) }
+	{
+		@include set-height($height);
+	}
+}
+
+@mixin define-heights($heights)
+{
+	@each $height in $heights
+	{
+		@include define-height($height);
+	}
+}

@@ -1,0 +1,7 @@
+/** @param $amt The source.
+    * @returns the first digit after the decimal point.
+    */
+@function number-decimal($amt)
+{
+    @return number-round(number-fractional($amt) * 10);
+}

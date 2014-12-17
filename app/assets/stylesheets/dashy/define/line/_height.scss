@@ -1,0 +1,15 @@
+@mixin define-line-height($height)
+{
+	#{ select-class(line-height $height) }
+	{
+		@include set-line-height($height);
+	}
+}
+
+@mixin define-line-heights($heights)
+{
+	@each $height in $heights
+	{
+		@include define-line-height($height);
+	}
+}

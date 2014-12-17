@@ -1,0 +1,15 @@
+@mixin define-font-weight($weight)
+{
+	#{ select-class(font-weight $weight) }, #{ select-class(font $weight) }
+	{
+		@include set-font-weight($weight);
+	}
+}
+
+@mixin define-font-weights($weights)
+{
+	@each $weight in $weights
+	{
+		@include define-font-weight($weight);
+	}
+}

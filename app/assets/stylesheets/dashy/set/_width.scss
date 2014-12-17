@@ -1,0 +1,4 @@
+@mixin set-width($width)
+{
+	@include set-rem(width, $width);
+}

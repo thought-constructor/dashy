@@ -1,0 +1,4 @@
+@mixin set-max-width($width)
+{
+	@include set-rem(max-width, $width);
+}

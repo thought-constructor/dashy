@@ -1,0 +1,11 @@
+$get-side-in-direction: (up: top, down: bottom, left: left, right: right);
+
+@function get-side-in-direction($direction)
+{
+    @return map-get($get-side-in-direction, $direction);
+}
+
+@function get-side-in-opposite-direction($direction)
+{
+    @return get-side-in-direction(get-opposite-direction($direction));
+}

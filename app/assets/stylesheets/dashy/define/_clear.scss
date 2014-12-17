@@ -1,0 +1,15 @@
+@mixin define-clear($clear)
+{
+	#{ select-class(clear $clear) }
+	{
+		@include set-clear($clear);
+	}
+}
+
+@mixin define-clears($clears: $all-clears)
+{
+	@each $clear in $clears
+	{
+		@include define-clear($clear);
+	}
+}

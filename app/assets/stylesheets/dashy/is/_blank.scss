@@ -1,0 +1,5 @@
+@function is-blank($val)
+{
+    @if is-string($val) { @return $val == ""; }
+    @return false;
+}

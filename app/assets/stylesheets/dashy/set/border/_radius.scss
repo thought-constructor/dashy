@@ -1,0 +1,6 @@
+@mixin set-border-radius($corners)
+{
+    -webkit-border-radius: $corners; 
+       -moz-border-radius: $corners; 
+            border-radius: $corners; 
+}

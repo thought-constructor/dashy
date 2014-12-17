@@ -1,0 +1,15 @@
+@mixin define-text-decoration($decoration)
+{
+	#{ select-class(text-decoration $decoration) }, #{ select-class(text $decoration) }
+	{
+		@include set-text-decoration($decoration);
+	}
+}
+
+@mixin define-text-decorations($decorations: $all-text-decorations)
+{
+	@each $decoration in $decorations
+	{
+		@include define-text-decoration($decoration);
+	}
+}

@@ -1,0 +1,10 @@
+@function select-tabloids-rows($tabloids: '*', $rows: '*')
+{
+    @return select-either(select-as('>', select-table-groups($tabloids) $rows),
+                          select-as('>', select-tables($tabloids) '*' $rows));
+}
+
+@mixin select-tabloids-rows($tabloids: '*', $rows: '*')
+{
+	#{ select-tabloids-rows($tabloids, $rows) } { @content; }
+}

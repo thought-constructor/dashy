@@ -1,0 +1,15 @@
+@mixin define-min-width($width)
+{
+	#{ select-class(min-width $width) }
+	{
+		@include set-min-width($width);
+	}
+}
+
+@mixin define-min-widths($widths)
+{
+	@each $width in $widths
+	{
+		@include define-min-width($width);
+	}
+}

@@ -1,0 +1,4 @@
+@mixin set-inner($side)
+{
+	@include set-position($side, 0);
+}

@@ -1,0 +1,9 @@
+@function to-percentage-from-unitless($num)
+{
+	@return $num * 100%;
+}
+
+@function to-percentage($arg)
+{
+	@if is-unitless($arg) { @return to-percentage-from-unitless($arg); }
+}

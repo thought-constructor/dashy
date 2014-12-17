@@ -1,0 +1,4 @@
+@function is-px($val)
+{
+    @return is-unit(px, $val);
+}

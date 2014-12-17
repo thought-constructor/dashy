@@ -1,0 +1,4 @@
+@function select-table-groups-rows($groups: '*', $rows: '*')
+{
+    @return select-as('>', $groups select(tr, $rows));
+}

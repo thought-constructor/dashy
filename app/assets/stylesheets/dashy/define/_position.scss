@@ -1,0 +1,15 @@
+@mixin define-position($position)
+{
+	#{ select-class(position $position) }
+	{
+		@include set-position($position);
+	}
+}
+
+@mixin define-positions($positions: $all-positions)
+{
+	@each $position in $positions
+	{
+		@include define-position($position);
+	}
+}

@@ -1,0 +1,4 @@
+@mixin set-max-height($height)
+{
+	@include set-rem(max-height, $height);
+}

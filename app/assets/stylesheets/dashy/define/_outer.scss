@@ -1,0 +1,15 @@
+@mixin define-outer($side)
+{
+	#{ select-class(outer $side) }
+	{
+		@include set-outer($side);
+	}
+}
+
+@mixin define-outers($sides: $all-sides)
+{
+	@each $side in $sides
+	{
+		@include define-outer($side);
+	}
+}

@@ -1,0 +1,9 @@
+@function select-lists($lists: '*')
+{
+    @return select((ul, ol) $lists);
+}
+
+@mixin select-lists($lists: '*')
+{
+    @include select-lists($lists) { @content; }
+}

@@ -1,0 +1,14 @@
+$initialize-push: true;
+
+@mixin initialize-push
+{
+	@if $initialize-push
+	{
+		$initialize-push: false !global;
+		
+		#{ select-class-prefix(push-) }
+		{
+		    @include set-position(relative);
+		}
+	}
+}

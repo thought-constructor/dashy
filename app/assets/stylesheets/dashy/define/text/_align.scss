@@ -1,0 +1,15 @@
+@mixin define-text-align($align)
+{
+	#{ select-class(text-align $align) }, #{ select-class(text $align) }, #{ select-class(align $align) }
+	{
+		@include set-text-align($align);
+	}
+}
+
+@mixin define-text-aligns($aligns: $all-text-aligns)
+{
+	@each $align in $aligns
+	{
+		@include define-text-align($align);
+	}
+}

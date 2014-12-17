@@ -1,0 +1,4 @@
+@function number-of($amt, $n)
+{
+    @return ($amt * 0) + $n;
+}

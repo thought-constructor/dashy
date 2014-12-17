@@ -1,0 +1,4 @@
+@function is-string($val)
+{
+    @return type-of($val) == string;
+}

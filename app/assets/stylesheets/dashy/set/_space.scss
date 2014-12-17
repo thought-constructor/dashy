@@ -1,0 +1,4 @@
+@mixin set-space($side, $amount)
+{
+	@include set-margin($side, $amount);
+}

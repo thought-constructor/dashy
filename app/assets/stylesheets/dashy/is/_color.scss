@@ -1,0 +1,4 @@
+@function is-color($val)
+{
+    @return type-of($val) == color;
+}
