@@ -8,10 +8,15 @@
 	}
 }
 
-@mixin define-pushes($directions, $amounts)
+@mixin define-pushs($directions, $amounts)
 {
-	@each $direction in $directions { @each $amount in $amounts
+	@each $direction in $directions { @each $amount in list-series($amounts)
 	{
 		@include define-push($direction, $amount);
 	}}
+}
+
+@mixin define-pushes($directions, $amounts)
+{
+	@include define-pushs($directions, $amounts);
 }

@@ -1,3 +1,8 @@
+@function select-class($class)
+{
+	@return select("." + string-hyphenate($class));
+}
+
 @mixin select-class($class)
 {
     @include select-class($class) { @content; }

@@ -7,7 +7,6 @@
 
 @function to-fraction($arg)
 {
-	@if is-fraction($arg)    { @return $arg; }
 	@if is-number($arg)      { @return to-fraction-from-number($arg); }
 	@if is-percentage($arg)  { @return to-fraction-from-percentage($arg); }
 }

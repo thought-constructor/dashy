@@ -1,0 +1,4 @@
+@function select-class-suffix($class)
+{
+	@return select-attribute-suffix(class, $class);
+}

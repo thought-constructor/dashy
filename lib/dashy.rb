@@ -8,6 +8,7 @@ unless defined?(Sass)
   require 'sass'
 end
 
+require "sass/script/value/string/dashy"
 require "sass/script/functions/dashy"
 
 module Dashy

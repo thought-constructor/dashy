@@ -1,0 +1,4 @@
+@function select-descendants($selectors...)
+{
+	@return select(" ", $selectors...);
+}

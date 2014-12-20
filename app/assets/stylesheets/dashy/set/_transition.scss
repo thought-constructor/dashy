@@ -1,10 +1,7 @@
-@mixin set-transition($arguments...)
+@mixin set-transition($arguments)
 {
-    @if 1 == length($arguments)
-    {
-        -webkit-transition: $arguments;
-           -moz-transition: $arguments;
-             -o-transition: $arguments;
-                transition: $arguments;
-    }
+    -webkit-transition: $arguments;
+       -moz-transition: $arguments;
+         -o-transition: $arguments;
+            transition: $arguments;
 }

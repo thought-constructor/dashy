@@ -1,0 +1,4 @@
+@function select-class-prefix($class)
+{
+	@return select-attribute-prefix(class, $class);
+}

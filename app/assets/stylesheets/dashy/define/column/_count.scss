@@ -1,0 +1,15 @@
+@mixin define-column-count($count)
+{
+	#{ select-class(column-count $count) }
+	{
+		@include set-column-count($count);
+	}
+}
+
+@mixin define-column-counts($counts)
+{
+	@each $count in list-series($counts)
+	{
+		@include define-column-count($count);
+	}
+}

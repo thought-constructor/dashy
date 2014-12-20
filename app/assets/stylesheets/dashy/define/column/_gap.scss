@@ -1,0 +1,15 @@
+@mixin define-column-gap($gap)
+{
+	#{ select-class(column-gap $gap) }
+	{
+		@include set-column-gap($gap);
+	}
+}
+
+@mixin define-column-gaps($gaps)
+{
+	@each $gap in $gaps
+	{
+		@include define-column-gap($gap);
+	}
+}

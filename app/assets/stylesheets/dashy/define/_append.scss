@@ -1,0 +1,53 @@
+@mixin define-append($append)
+{
+	@if is-unitless($append)
+	{
+		@include define-elastic-append(to-percentage-from-unitless($append));
+	}
+	@else if is-percentage($append)
+	{
+		@include define-elastic-append($append);
+	}
+	@else
+	{
+		@include define-fixed-append($append);
+	}
+}
+
+@mixin define-elastic-append($append-percentage)
+{
+	$append-fraction: to-fraction-from-percentage($append-percentage);
+	$approximate-append-percentage: number-approximate-low($append-percentage);
+
+	@if is-round($approximate-append-percentage)
+	{
+		#{ select-class(append $approximate-append-percentage) },
+		#{ select-class(append $append-fraction) }
+		{
+			@include set-append($approximate-append-percentage);
+		}
+	}
+	@else
+	{
+		#{ select-class(append $append-fraction) }
+		{
+			@include set-append($approximate-append-percentage);
+		}
+	}
+}
+
+@mixin define-fixed-append($append)
+{
+	#{ select-class(append $append) }
+	{
+		@include set-append($append);
+	}
+}
+
+@mixin define-appends($appends)
+{
+	@each $append in list-series($appends)
+	{
+		@include define-append($append);
+	}
+}

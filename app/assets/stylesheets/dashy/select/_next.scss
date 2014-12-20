@@ -1,0 +1,4 @@
+@function select-next($selectors...)
+{
+	@return select("+", $selectors...);
+}

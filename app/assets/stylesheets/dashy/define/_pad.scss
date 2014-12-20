@@ -8,7 +8,7 @@
 
 @mixin define-pads($sides, $amounts)
 {
-	@each $side in $sides { @each $amount in $amounts
+	@each $side in list-series($sides) { @each $amount in list-series($amounts)
 	{
 		@include define-pad($side, $amount);
 	}}

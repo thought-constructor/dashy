@@ -1,4 +1,4 @@
 @function is-null($val)
 {
-    @return is-blank($val) or is-empty($val);
+    @return null == $val or is-blank($val) or is-empty($val);
 }

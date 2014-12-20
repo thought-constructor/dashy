@@ -1,0 +1,11 @@
+@function select-attribute($name, $value: null)
+{
+	@if is-null($value)
+	{
+		@return select("[#{ $name }]");
+	}
+	@else
+	{
+		@return select("[#{ $name }='#{ $value }']");
+	}
+}

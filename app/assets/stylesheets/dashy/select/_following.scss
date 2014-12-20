@@ -1,0 +1,4 @@
+@function select-following($selectors...)
+{
+	@return select("~", $selectors...);
+}

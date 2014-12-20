@@ -1,0 +1,6 @@
+@mixin set-column-break-inside($break)
+{
+	-webkit-column-break-inside: $break;
+	   -moz-column-break-inside: $break;
+	        column-break-inside: $break;
+}

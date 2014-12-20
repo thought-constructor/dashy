@@ -1,0 +1,5 @@
+@mixin set-tweening($arguments)
+{
+    -webkit-transition-timing-function: $arguments;
+            transition-timing-function: $arguments;
+}

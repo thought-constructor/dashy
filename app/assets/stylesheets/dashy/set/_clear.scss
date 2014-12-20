@@ -1,6 +1,8 @@
+$set-clear-fix: fix content;
+
 @mixin set-clear($value)
 {
-	@if "contents" == $value
+	@if not is-null(index($set-clear-fix, $value))
 	{
 		&:after { content: " "; clear: both; display: block; visiblity: hidden; }
 	}

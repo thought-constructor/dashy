@@ -1,0 +1,9 @@
+@function select-attribute-prefix($name, $value)
+{
+	@return select-either("[#{ $name }^='#{ $value }']", "[#{ $name }*=' #{ $value }']");
+}
+
+@mixin select-attribute-prefix($name, $value)
+{
+	#{ select-attribute-prefix($name, $value) } { @content; }
+}

@@ -1,0 +1,4 @@
+@function select-as-next($selectors...)
+{
+	@return select-as("+", $selectors...);
+}

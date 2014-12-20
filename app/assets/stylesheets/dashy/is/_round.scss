@@ -1,0 +1,4 @@
+@function is-round($number)
+{
+	@return round($number) == $number;
+}

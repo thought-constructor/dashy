@@ -10,7 +10,7 @@
 
 @mixin define-pulls($directions, $amounts)
 {
-	@each $direction in $directions { @each $amount in $amounts
+	@each $direction in $directions { @each $amount in list-series($amounts)
 	{
 		@include define-pull($direction, $amount);
 	}}

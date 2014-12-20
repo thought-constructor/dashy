@@ -8,7 +8,7 @@
 
 @mixin define-font-weights($weights)
 {
-	@each $weight in $weights
+	@each $weight in list-series($weights)
 	{
 		@include define-font-weight($weight);
 	}

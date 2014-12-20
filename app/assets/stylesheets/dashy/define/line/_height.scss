@@ -1,6 +1,8 @@
 @mixin define-line-height($height)
 {
-	#{ select-class(line-height $height) }
+	$approximate-height: number-approximate($height);
+
+	#{ select-class(line-height $approximate-height) }, #{ select-class(line $approximate-height) }
 	{
 		@include set-line-height($height);
 	}
@@ -8,7 +10,7 @@
 
 @mixin define-line-heights($heights)
 {
-	@each $height in $heights
+	@each $height in list-series($heights)
 	{
 		@include define-line-height($height);
 	}

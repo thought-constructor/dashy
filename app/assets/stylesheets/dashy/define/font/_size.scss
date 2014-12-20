@@ -8,7 +8,7 @@
 
 @mixin define-font-sizes($sizes)
 {
-	@each $size in $sizes
+	@each $size in list-series($sizes)
 	{
 		@include define-font-size($size);
 	}

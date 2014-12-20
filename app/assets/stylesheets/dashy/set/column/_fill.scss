@@ -1,0 +1,6 @@
+@mixin set-column-fill($fill)
+{
+	-webkit-column-fill: $fill;
+	   -moz-column-fill: $fill;
+	        column-fill: $fill;
+}

@@ -19,10 +19,20 @@
 	$width-fraction: to-fraction-from-percentage($width-percentage);
 	$approximate-width-percentage: number-approximate-low($width-percentage);
 
-	#{ select-class(width $width-fraction) },
-	#{ select-class(width $approximate-width-percentage) }
+	@if is-round($approximate-width-percentage)
 	{
-		@include set(width, $approximate-width-percentage);
+		#{ select-class(width $approximate-width-percentage) },
+		#{ select-class(width $width-fraction) }
+		{
+			@include set-width($approximate-width-percentage);
+		}
+	}
+	@else
+	{
+		#{ select-class(width $width-fraction) }
+		{
+			@include set-width($approximate-width-percentage);
+		}
 	}
 }
 
@@ -36,7 +46,7 @@
 
 @mixin define-widths($widths)
 {
-	@each $width in $widths
+	@each $width in list-series($widths)
 	{
 		@include define-width($width);
 	}

@@ -1,6 +1,6 @@
-@mixin set-position($position-or-side, $amount:"")
+@mixin set-position($position-or-side, $amount: null)
 {
-	@if is-blank($amount)
+	@if is-null($amount)
 	{
 		position: #{ $position-or-side };
 	}

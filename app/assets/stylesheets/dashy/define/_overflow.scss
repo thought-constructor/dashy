@@ -1,0 +1,15 @@
+@mixin define-overflow($overflow)
+{
+	#{ select-class(overflow $overflow) }
+	{
+		@include set-overflow($overflow);
+	}
+}
+
+@mixin define-overflows($overflows: $all-overflows)
+{
+	@each $overflow in $overflows
+	{
+		@include define-overflow($overflow);
+	}
+}

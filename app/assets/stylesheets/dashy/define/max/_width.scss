@@ -8,7 +8,7 @@
 
 @mixin define-max-widths($widths)
 {
-	@each $width in $widths
+	@each $width in list-series($widths)
 	{
 		@include define-max-width($width);
 	}

@@ -1,0 +1,15 @@
+@mixin define-column-break-inside($break)
+{
+	#{ select-class(column-break-inside $break) }
+	{
+		@include set-column-break-inside($break);
+	}
+}
+
+@mixin define-column-break-insides($breaks)
+{
+	@each $break in $breaks
+	{
+		@include define-column-break-inside($break);
+	}
+}

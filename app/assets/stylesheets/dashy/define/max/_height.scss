@@ -8,7 +8,7 @@
 
 @mixin define-max-heights($heights)
 {
-	@each $height in $heights
+	@each $height in list-series($heights)
 	{
 		@include define-max-height($height);
 	}

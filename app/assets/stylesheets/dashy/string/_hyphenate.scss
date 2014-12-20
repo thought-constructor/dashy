@@ -1,0 +1,4 @@
+@function string-hyphenate($strs)
+{
+	@return string-join($strs, "-");
+}

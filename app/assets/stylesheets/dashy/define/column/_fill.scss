@@ -1,0 +1,15 @@
+@mixin define-column-fill($fill)
+{
+	#{ select-class(column-fill $fill) }
+	{
+		@include set-column-fill($fill);
+	}
+}
+
+@mixin define-column-fills($fills)
+{
+	@each $fill in $fills
+	{
+		@include define-column-fill($fill);
+	}
+}

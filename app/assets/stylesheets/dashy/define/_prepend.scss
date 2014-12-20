@@ -1,0 +1,53 @@
+@mixin define-prepend($prepend)
+{
+	@if is-unitless($prepend)
+	{
+		@include define-elastic-prepend(to-percentage-from-unitless($prepend));
+	}
+	@else if is-percentage($prepend)
+	{
+		@include define-elastic-prepend($prepend);
+	}
+	@else
+	{
+		@include define-fixed-prepend($prepend);
+	}
+}
+
+@mixin define-elastic-prepend($prepend-percentage)
+{
+	$prepend-fraction: to-fraction-from-percentage($prepend-percentage);
+	$approximate-prepend-percentage: number-approximate-low($prepend-percentage);
+
+	@if is-round($approximate-prepend-percentage)
+	{
+		#{ select-class(prepend $approximate-prepend-percentage) },
+		#{ select-class(prepend $prepend-fraction) }
+		{
+			@include set-prepend($approximate-prepend-percentage);
+		}
+	}
+	@else
+	{
+		#{ select-class(prepend $prepend-fraction) }
+		{
+			@include set-prepend($approximate-prepend-percentage);
+		}
+	}
+}
+
+@mixin define-fixed-prepend($prepend)
+{
+	#{ select-class(prepend $prepend) }
+	{
+		@include set-prepend($prepend);
+	}
+}
+
+@mixin define-prepends($prepends)
+{
+	@each $prepend in list-series($prepends)
+	{
+		@include define-prepend($prepend);
+	}
+}
