@@ -1,31 +1,36 @@
 # Dashy
+> Selector combinators and other helpers for Sass...
 
-TODO: Write a gem description
+This is going to take a while to document, so in the meantime, here's how Dashy looks in the wild:
 
-## Installation
+```scss
+#{ select-table-groups-rows-cells('.vertically-striped', '*', select-odd-siblings(100)) }
+{
+    background-color:gray;
+}
 
-Add this line to your application's Gemfile:
+#{ select-table-groups-rows-cells('.vertically-ruled', '*', '* + *') }
+{
+    border-left:1px solid black;
+}
 
-```ruby
-gem 'dashy'
+#{ select-table-groups-rows-cells('.lightly-vertically-ruled', '*', '* + *') }
+{
+    border-left:1px solid gray;
+}
+
+#{ select-table-groups-rows-cells('.horizontally-striped', select-odd-siblings(100)) }
+{
+    background-color:gray;
+}
+
+#{ select-table-groups-rows-cells('.horizontally-ruled', '* + *') }
+{
+    border-top:1px solid black;
+}
+
+#{ select-table-groups-rows-cells('.lightly-horizontally-ruled', '* + *') }
+{
+    border-top:1px solid gray;
+}
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install dashy
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/dashy/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request

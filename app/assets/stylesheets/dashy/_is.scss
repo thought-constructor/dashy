@@ -1,6 +1,0 @@
-@function is($val)
-{
-    @return not is-null($val);
-}
-
-@import "./*";

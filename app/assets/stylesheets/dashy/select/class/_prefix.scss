@@ -2,3 +2,8 @@
 {
 	@return select-attribute-prefix(class, $class);
 }
+
+@mixin select-class-prefix($class)
+{
+	#{ select-class-prefix($class) } { @content; }
+}

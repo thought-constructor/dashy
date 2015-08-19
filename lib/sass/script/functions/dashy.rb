@@ -88,7 +88,7 @@ module Sass::Script::Functions
     end
 
     def to_fraction_from_number num
-      string_new Rational(num.value).rationalize(0.001).to_s, :identifier
+      string_new Rational(num.value).rationalize(0.0001).to_s, :identifier
     end
 
   end

@@ -1,0 +1,4 @@
+@mixin set-rgb($attribute, $color)
+{
+	@include set($attribute, rgba($color, 1.0));
+}

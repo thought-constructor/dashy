@@ -1,0 +1,4 @@
+@function is-something($val)
+{
+    @return not is-nothing($val);
+}

@@ -1,0 +1,9 @@
+@mixin set-opacity($opacity)
+{
+	@if is-percentage($opacity)
+	{
+		$opacity: $opacity / 100%;
+	}
+	@include set(opacity, $opacity);
+	filter: alpha(opacity=#{ round(100 * $opacity) });
+}

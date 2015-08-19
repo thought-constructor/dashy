@@ -1,0 +1,53 @@
+@mixin define-opacity($opacity)
+{
+	@if is-unitless($opacity)
+	{
+		@include define-elastic-opacity(to-percentage-from-unitless($opacity));
+	}
+	@else if is-percentage($opacity)
+	{
+		@include define-elastic-opacity($opacity);
+	}
+	@else
+	{
+		@include define-fixed-opacity($opacity);
+	}
+}
+
+@mixin define-elastic-opacity($opacity-percentage)
+{
+	$opacity-fraction: to-fraction-from-percentage($opacity-percentage);
+	$approximate-opacity-percentage: number-approximate-low($opacity-percentage);
+
+	@if is-round($approximate-opacity-percentage)
+	{
+		#{ select-class(opacity $approximate-opacity-percentage) },
+		#{ select-class(opacity $opacity-fraction) }
+		{
+			@include set-opacity($approximate-opacity-percentage);
+		}
+	}
+	@else
+	{
+		#{ select-class(opacity $opacity-fraction) }
+		{
+			@include set-opacity($approximate-opacity-percentage);
+		}
+	}
+}
+
+@mixin define-fixed-opacity($opacity)
+{
+	#{ select-class(opacity $opacity) }
+	{
+		@include set-opacity($opacity);
+	}
+}
+
+@mixin define-opacities($opacities)
+{
+	@each $opacity in list-series($opacities)
+	{
+		@include define-opacity($opacity);
+	}
+}

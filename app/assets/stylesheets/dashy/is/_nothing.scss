@@ -1,0 +1,4 @@
+@function is-nothing($val)
+{
+    @return is-null($val) or is-blank($val) or is-empty($val);
+}

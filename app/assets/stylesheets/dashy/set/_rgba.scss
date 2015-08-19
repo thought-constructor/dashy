@@ -1,0 +1,8 @@
+@mixin set-rgba($attribute, $color)
+{
+	@if alpha($color) < 1.0
+	{
+		@include set-rgb($attribute, $color);
+	}
+	@include set($attribute, $color);
+}
