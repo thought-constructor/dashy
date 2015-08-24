@@ -1,0 +1,7 @@
+@mixin when-retina-display
+{
+	@include when-device-pixel-ratio(2)
+	{
+		@content;
+	}
+}

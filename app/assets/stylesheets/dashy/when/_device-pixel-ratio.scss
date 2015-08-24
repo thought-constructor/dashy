@@ -1,0 +1,13 @@
+@mixin when-device-pixel-ratio($number)
+{
+	@media
+	only screen and (-webkit-min-device-pixel-ratio: #{ $number }),
+	only screen and (   min--moz-device-pixel-ratio: #{ $number }),
+	only screen and (     -o-min-device-pixel-ratio: #{ $number }/1),
+	only screen and (        min-device-pixel-ratio: #{ $number }),
+	only screen and (                min-resolution: #{ $number * 96 }dpi),
+	only screen and (                min-resolution: #{ $number }dppx)
+	{
+		@content;
+	}
+}
